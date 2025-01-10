@@ -1,15 +1,9 @@
-package med.voll.api.paciente;
-import med.voll.api.direccion.Direccion;
+package med.voll.api.domain.paciente;
+import med.voll.api.domain.direccion.Direccion;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @EqualsAndHashCode(of = "id")
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity(name = "Paciente")
 @Table(name = "pacientes")
 public class Paciente {
@@ -47,5 +41,46 @@ public class Paciente {
 
     public void inactivar() {
         this.activo = false;
+    }
+
+    public Paciente() {
+    }
+
+    public Paciente(Long id, boolean activo, String nombre, String email, String documentoIdentidad, String telefono, Direccion direccion) {
+        this.id = id;
+        this.activo = activo;
+        this.nombre = nombre;
+        this.email = email;
+        this.documentoIdentidad = documentoIdentidad;
+        this.telefono = telefono;
+        this.direccion = direccion;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDocumentoIdentidad() {
+        return documentoIdentidad;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public Direccion getDireccion() {
+        return direccion;
     }
 }
